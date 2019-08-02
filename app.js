@@ -1,3 +1,4 @@
+// I wrote code that works but doesn't necessairly look good, please clean it up if you would like
 var readline = require('readline');
 var rl = readline.createInterface({
   input: process.stdin,
@@ -12,6 +13,13 @@ var upload_fail = 0
 var download_success = 0
 var download_fail = 0;
 
+function percent(a, b) { // to stop 0/0 errors nicely
+  if (a == 0) {
+    return 0.00
+  } else {
+    return (a/b*100).toFixed(2)
+  }
+}
 function update() { // show screen data
   console.log('\u001B[2J\u001B[0;0f');
   console.log("\n\n\tNode Connection Tracker\n\n\n");
@@ -20,8 +28,8 @@ function update() { // show screen data
   console.log("\tUploads:   " + upload_number);
   console.log("\tDownloads: " + download_number)
   console.log("\tTotal:     " + (upload_number + download_number) + "\n")
-  console.log("\tUpload Sucess Rate:   " + upload_success + " / " + (upload_success+upload_fail) + " (" + (upload_success/(upload_success+upload_fail)*100).toFixed(2)+ "%)")
-  console.log("\tDownload Sucess Rate: " + download_success + " / " + (download_success+download_fail) + " (" + (download_success/(download_success+download_fail)*100).toFixed(2)+ "%)")
+  console.log("\tUpload Sucess Rate:   " + upload_success + " / " + (upload_success+upload_fail) + " (" + percent(upload_success, upload_success+upload_fail)+ "%)")
+  console.log("\tDownload Sucess Rate: " + download_success + " / " + (download_success+download_fail) + " (" + percent(download_success, download_success+download_fail) + "%)")
   console.log("\n\n");
   upload_array = []
   download_array = []
