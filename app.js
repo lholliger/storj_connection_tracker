@@ -34,16 +34,16 @@ function update() { // show screen data
   upload_array = []
   download_array = []
   for (key in uploads) {
-    upload_array.push(key + (" (" + uploads[key] + ")").slice(-4))
+    upload_array.push(key + (" (" + uploads[key] + ")").padEnd(5))
   }
   for (key in downloads) {
-    download_array.push(key + (" (" + downloads[key] + ")").slice(-4))
+    download_array.push(key + (" (" + downloads[key] + ")").padEnd(5))
   }
 higher = [upload_number, download_number].sort(function(a, b){return b-a})[0];
-console.log("Uploads: " + " ".repeat(51) + "Downloads: ")
+console.log("Uploads: " + " ".repeat(52) + "Downloads: ")
   for (i = 0; i < higher; i++) {
     if (upload_array[i] == undefined) {
-      upload_array[i] = " ".repeat(56)
+      upload_array[i] = " ".repeat(57)
     }
     if (download_array[i] == undefined) {
       download_array[i] = ""
